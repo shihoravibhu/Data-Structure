@@ -1,3 +1,5 @@
+// 18. Write a program to calculate average of first n numbers
+
 #include<stdio.h>
 
 void main(){

@@ -1,4 +1,4 @@
-// Read two 2x2 matrices and perform addition of matrices into third matrix and print it 
+// 31.Read two 2x2 matrices and perform addition of matrices into third matrix and print it 
 
 #include<stdio.h>
 

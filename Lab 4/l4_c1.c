@@ -1,3 +1,6 @@
+// 30. WAP to replace lowercase characters by uppercase & vice-versa in a user 
+// specified string. 
+
 #include<stdio.h>
 #include<string.h>
 

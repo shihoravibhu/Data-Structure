@@ -1,3 +1,6 @@
+// 26. Write a program to insert a number in an array that is already sorted in an 
+// ascending order.
+
 #include <stdio.h>
 
 void main()
@@ -16,6 +19,30 @@ void main()
 
     printf("Enter Element : ");
     scanf("%d", &n);
+
+    // int idx = 0;
+
+    // for(int i=0 ; i<5 ; i++){
+
+    //     if(a[i] > n){
+    //         idx = i ;
+    //         break;
+    //     }
+    // }
+
+    // for(int i=0 ; i<6 ; i++){
+
+    //     if(i >= idx){
+    //         int temp = a[i];
+    //         a[i] = n;
+    //         n = temp;
+    //     }
+
+    // }
+
+
+    // OR
+
 
     for (int i = 0; i < 6; i++)
     {

@@ -1,3 +1,6 @@
+// 19. Write a program to find position of the smallest number & the largest number 
+// from given n numbers.
+
 #include<stdio.h>
 
 void main(){
@@ -10,7 +13,7 @@ void main(){
     int a[n];
 
     for(int i=0 ; i<n ; i++){
-        printf("Enter Number : a[%d] : " ,i);
+        printf("Enter Element : a[%d] : " ,i);
         scanf("%d",&a[i]);
     }
 

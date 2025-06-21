@@ -9,6 +9,10 @@
 // the characters present in B is same as characters present in A,
 // irrespective of their sequence. For ex: “LISTEN” == “SILENT”
 
+/**
+ * This C program takes a list of words, randomly selects one, and then checks if a user-inputted word
+ * is an anagram of the selected word.
+ */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -43,6 +47,10 @@ void main()
 
     int sum = 0;
 
+    /* This part of the code is checking if the length of the randomly selected word (`len`) is equal
+    to the length of the user-inputted word (`length_anagram`). If the lengths are equal, it then
+    iterates over each character of the selected word and tries to find a matching character in the
+    user-inputted word. */
     if (len == length_anagram)
     {
         for (int i = 0; i < len; i++)

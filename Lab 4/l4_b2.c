@@ -1,3 +1,5 @@
+// 28. Write a program to delete duplicate numbers from an array. 
+
 #include <stdio.h>
 
 void main()

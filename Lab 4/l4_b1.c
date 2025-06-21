@@ -1,3 +1,6 @@
+// 27. Write a program to delete a number from an array that is already sorted in an 
+// ascending order. 
+
 #include <stdio.h>
 
 void main()

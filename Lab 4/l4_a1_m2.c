@@ -1,3 +1,5 @@
+// 24. Write a program to insert a number at a given location in an array. 
+
 #include <stdio.h>
 
 void main()
@@ -16,7 +18,7 @@ void main()
     printf("Enter Location Index : ");
     scanf("%d", &idx);
 
-    printf("Enter Element : ");
+    printf("Enter Insert Element : ");
     scanf("%d", &n);
 
     int temp = 0;

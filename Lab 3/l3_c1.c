@@ -1,3 +1,5 @@
+// 22. WAP to print Pascal triangle.
+
 #include<stdio.h>
 
 void main(){
@@ -9,6 +11,8 @@ void main(){
 
     int a[n][n];
 
+   /* This part of the code is responsible for populating the 2D array `a` with values to create a
+   Pascal's Triangle. */
     for(int i=0 ; i<n ; i++){
         for(int j=0 ; j<=i ;j++){
             if(j==0 || j==i){
@@ -20,6 +24,8 @@ void main(){
         }
     }
 
+    /* This part of the code is responsible for printing the Pascal's Triangle pattern. Here's a
+    breakdown of what each nested loop is doing: */
     for(int i=0 ; i<n ; i++){
         printf("\n");
         for(int j=0 ; j<n-i ; j++){

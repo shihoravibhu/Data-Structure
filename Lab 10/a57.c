@@ -99,14 +99,24 @@ void deleteAtEnd(){
         return;
     }
 
+     // If only one node
+    if (head->next == NULL) {
+        free(head);
+        head = NULL;
+        return;
+    }
+
     struct Node* curr = head;
 
+     // Traverse to the second last node
     while(curr->next->next != NULL){
 
         curr = curr->next;
     }
 
+    struct Node* temp = curr->next;
     curr->next = NULL;
+    free(temp);
 
 }
 
@@ -114,23 +124,29 @@ void deleteNodeFromPosition(int n){
 
     struct Node* curr = head;
 
-    if (curr == NULL)
+    if (head == NULL)
     {
         printf("List Is Empty");
         
         return;
     }
 
-    if(curr->next == NULL){
+    if (n < 1) {
+        printf("Invalid position\n");
+        return;
+    }
 
-        curr = NULL;
-        free(curr);
+    if(n==1){  // First Node Ne Delete Karva
+        struct Node* temp = head;
+        head = head->next;
+        free(temp);
+       
         return;
     }
 
     int i=1;
 
-    struct Node* temp;  // curr->next ne free karva mate apde temp variable lidhel che 
+    struct Node* temp2;  // curr->next ne free karva mate apde temp variable lidhel che 
 
     while(curr->next!=NULL){
 
@@ -143,11 +159,11 @@ void deleteNodeFromPosition(int n){
 
     }
 
-    temp = curr->next;   
+    temp2 = curr->next;   
 
     curr->next = curr->next->next;
 
-    free(temp);
+    free(temp2);
 }
 
 int countNodes()

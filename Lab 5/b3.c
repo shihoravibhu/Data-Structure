@@ -7,6 +7,7 @@
 // number or not and display an appropriate message.
 // • Given a word A and word B. B is said to be an anagram of A if and only if
 // the characters present in B is same as characters present in A,
+
 // irrespective of their sequence. For ex: “LISTEN” == “SILENT”
 
 /**

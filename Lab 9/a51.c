@@ -28,10 +28,11 @@ void main(){
         }
 
         int sum = 0;
+        int *ptr = arr;
         
         for (int i = 0; i < n; i++)
         {
-            sum+= arr[i];            
+            sum+= *(ptr+i);            
         }
 
         printf("sum of all Element : %d", sum);

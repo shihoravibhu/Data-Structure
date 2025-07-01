@@ -22,7 +22,6 @@ struct Node *insertAtFirst(struct Node *head, int x)
     return head;
 }
 
-
 struct Node *insertAtLast(struct Node *head, int x)
 {
 
@@ -69,58 +68,90 @@ void display(struct Node *head)
     printf("NULL\n");
 }
 
-struct Node* copy(struct Node* head){
+// Method-1
 
-    if(head == NULL){
+// struct Node* copy(struct Node* head){
+
+//     if(head == NULL){
+//         return NULL;
+//     }
+
+//     struct Node* newhead = (struct Node*) malloc(sizeof(struct Node));
+//     newhead->data = head->data;
+//     newhead->next = NULL;
+
+//     struct Node* oldtemp = head->next;
+//     struct Node* newtemp = newhead;
+
+//     while(oldtemp != NULL){
+
+//         struct Node* copytemp = (struct Node*) malloc(sizeof(struct Node));
+//         copytemp->data = oldtemp->data;
+//         copytemp->next = NULL;
+
+//         newtemp->next = copytemp;
+//         oldtemp = oldtemp->next;
+//         newtemp = newtemp->next;
+
+//     }
+
+//     return newhead;
+
+// }
+
+// Method-2
+
+struct Node *copy(struct Node *head)
+{
+
+    if (head == NULL)
+    {
         return NULL;
     }
 
-    struct Node* newhead = (struct Node*) malloc(sizeof(struct Node));
-    newhead->data = head->data;
-    newhead->next = NULL;
+    struct Node *newhead = (struct Node *)malloc(sizeof(struct Node));
 
-    struct Node* oldtemp = head->next;
-    struct Node* newtemp = newhead;
+    struct Node *curr = head;
+    struct Node *curr2 = newhead;
+    
+    while (curr != NULL)
+    {
 
-    while(oldtemp != NULL){
+        curr2->data = curr->data;
 
-        struct Node* copytemp = (struct Node*) malloc(sizeof(struct Node));
-        copytemp->data = oldtemp->data;
-        copytemp->next = NULL;
+        if (curr->next != NULL){
+            curr2->next = (struct Node *)malloc(sizeof(struct Node));
+        }
         
-        newtemp->next = copytemp;
-        oldtemp = oldtemp->next;
-        newtemp = newtemp->next;
-
+        else{
+            curr2->next = NULL;
+        }
+        
+        curr = curr->next;
+        curr2 = curr2->next;
     }
 
     return newhead;
-    
-    
 }
-
 
 void main()
 {
 
-    struct Node *h1 = NULL;   
-    struct Node *h2 = NULL;   
+    struct Node *h1 = NULL;
+    struct Node *h2 = NULL;
 
     h1 = insertAtFirst(h1, 9);
     h1 = insertAtFirst(h1, 8);
     h1 = insertAtFirst(h1, 8);
     h1 = insertAtFirst(h1, 8);
-    h1 = insertAtFirst(h1, 8);    
+    h1 = insertAtFirst(h1, 8);
     h1 = insertAtFirst(h1, 7);
-    h1 = insertAtFirst(h1, 6);  
-    h1 = insertAtFirst(h1, 6);      
-    
+    h1 = insertAtFirst(h1, 6);
+    h1 = insertAtFirst(h1, 6);
+
     h2 = copy(h1);
-    
+
     display(h1);
 
-    display(h2);  
-    
-
-   
+    display(h2);
 }

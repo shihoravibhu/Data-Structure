@@ -84,6 +84,7 @@ struct Node *swap(int k, struct Node *head)
     // Count the number of nodes
     int n = 0;
     struct Node *temp = head;
+
     while (temp != NULL)
     {
         n++;
@@ -142,6 +143,7 @@ struct Node *swap(int k, struct Node *head)
     {
         head = temp1;
     }
+    
     return head;
 }
 

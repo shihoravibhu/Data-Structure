@@ -47,8 +47,9 @@ void insertAtTail(int n){
     }
 
     else{
-        newNode->next = head;
+
         tail->next = newNode; 
+        newNode->next = head;
         tail = newNode;
     }
 

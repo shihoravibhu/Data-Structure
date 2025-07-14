@@ -70,7 +70,7 @@ void display(struct Node *head)
 
 void sortArray(struct Node **head){
 
-    if(*head == NULL && (*head)->next == NULL ){
+    if(*head == NULL || (*head)->next == NULL ){
         return ;
     }
 
@@ -81,7 +81,7 @@ void sortArray(struct Node **head){
         swapped = 0;
         curr=head;
 
-        while(*curr != NULL && (*curr)->next != NULL){
+        while((*curr)->next != NULL){
             struct Node* first = *curr;
             struct Node* second = (*curr)->next;
 

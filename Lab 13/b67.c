@@ -100,6 +100,7 @@ struct Node *gcd(struct Node *head)
         struct Node *temp = curr->next;
         int g = find_gcd(curr->data, temp->data);
 
+        // Create new node for GCD
         struct Node *newnode = (struct Node *)malloc(sizeof(struct Node));
 
         newnode->data = g;
@@ -109,7 +110,8 @@ struct Node *gcd(struct Node *head)
         newnode->next = temp;
 
         // Move curr to the next original node
-        curr = temp;
+        // curr = temp;
+        curr = curr->next;
     }
 
     return head;

@@ -76,38 +76,36 @@ void display()
     printf("%d\n", head->data);
 }
 
-void split()
-{
-
-    if (head == tail || head->next == head)
-    {
-        return;
+struct Node* split() {
+    if (head == NULL || head->next == head) {
+        printf("Not enough elements to split.\n");
+        return NULL;
     }
 
-    struct Node *slow = head;
-    struct Node *fast = head;
+    struct Node* slow = head;
+    struct Node* fast = head;
 
-    while (fast->next != NULL && fast->next->next != NULL)
-    {
-
+    // Use slow-fast with CSLL condition
+    while (fast->next != head && fast->next->next != head) {
         slow = slow->next;
         fast = fast->next->next;
     }
 
-    struct Node *secNode = slow->next;
+    struct Node* head2 = slow->next; // start of second half
+
+    // Make first half circular
     slow->next = head;
 
-    struct Node *curr = secNode;
-
-    while (curr->next != head)
-    {
+    // Make second half circular
+    struct Node* curr = head2;
+    while (curr->next != head) {
         curr = curr->next;
     }
+    curr->next = head2;
 
-    curr->next = secNode;
-
-    return secNode;
+    return head2; // return the head of the second half
 }
+
 
 void main()
 {

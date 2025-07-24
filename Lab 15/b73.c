@@ -17,8 +17,9 @@ struct Node *insertAtFirst(struct Node *head, int x)
 
     newNode->data = x;
     newNode->next = head;
-    
-    if(head == NULL){
+
+    if (head == NULL)
+    {
         newNode->prev = NULL;
         head = newNode;
         return head;
@@ -27,7 +28,6 @@ struct Node *insertAtFirst(struct Node *head, int x)
     head->prev = newNode;
     head = newNode;
     return head;
-   
 }
 
 struct Node *insertAtLast(struct Node *head, int x)
@@ -77,47 +77,51 @@ void display(struct Node *head)
     printf("NULL\n");
 }
 
-struct Node* deleteNodeFromPosition(int n , struct Node* head){
+struct Node *deleteNodeFromPosition(int n, struct Node *head)
+{
 
-    struct Node* curr = head;
+    struct Node *curr = head;
 
     if (head == NULL)
     {
         printf("List Is Empty");
-        
+
         return NULL;
     }
 
-    if (n < 1) {
+    if (n < 1)
+    {
         printf("Invalid position\n");
         return head;
     }
 
-    if(n==1){  // First Node Ne Delete Karva
-        struct Node* temp = head;
+    if (n == 1)
+    { // First Node Ne Delete Karva
+        struct Node *temp = head;
         head = head->next;
         head->prev = NULL;
         free(temp);
-       
+
         return head;
     }
 
-    int i=1;
+    int i = 1;
 
-    struct Node* temp2;  // curr->next ne free karva mate apde temp variable lidhel che 
+    struct Node *temp2; // curr->next ne free karva mate apde temp variable lidhel che
 
-    while(curr->next!=NULL){
+    while (curr->next != NULL)
+    {
 
-        if(i==(n-1)){
+        if (i == (n - 1))
+        {
             break;
         }
 
         curr = curr->next;
         i++;
-
     }
 
-    temp2 = curr->next;   
+    temp2 = curr->next;
 
     curr->next = curr->next->next;
     curr->next->next->prev = curr;
@@ -127,21 +131,26 @@ struct Node* deleteNodeFromPosition(int n , struct Node* head){
     return head;
 }
 
-struct Node* deleteAlternatNode(struct Node* head){
+struct Node *deleteAlternatNode(struct Node *head)
+{
 
-     struct Node* curr = head;
+    struct Node *curr = head;
 
     if (head == NULL)
     {
         printf("List Is Empty");
-        
+
         return NULL;
     }
 
-    while(curr!=NULL && curr->next!=NULL){
-        struct Node* temp = curr->next; 
+    while (curr != NULL && curr->next != NULL)
+    {
+
+        struct Node *temp = curr->next;
         curr->next = curr->next->next;
-        if(curr->next->next != NULL){
+
+        if (curr->next->next != NULL)
+        {
 
             curr->next->next->prev = curr;
         }
@@ -151,10 +160,7 @@ struct Node* deleteAlternatNode(struct Node* head){
     }
 
     return head;
-    
 }
-
-
 
 void main()
 {
@@ -169,13 +175,12 @@ void main()
     h1 = insertAtFirst(h1, 3);
     h1 = insertAtFirst(h1, 2);
     h1 = insertAtFirst(h1, 1);
-    
+
     display(h1);
 
     h1 = insertAtLast(h1, 9);
     display(h1);
-    
+
     h1 = deleteAlternatNode(h1);
     display(h1);
-
 }

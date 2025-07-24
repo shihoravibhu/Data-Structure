@@ -77,8 +77,7 @@ struct Node *swap(int k, struct Node *head)
         printf("List Is Empty");
         return NULL;
     }
-
-    int count = 1;
+    
     struct Node *curr = head;
 
     // Count the number of nodes
@@ -89,6 +88,11 @@ struct Node *swap(int k, struct Node *head)
     {
         n++;
         temp = temp->next;
+    }
+
+    if(k < 1){
+        printf("Enter Valid K\n");
+        return head;
     }
 
     // If k is more than number of nodes
@@ -105,6 +109,11 @@ struct Node *swap(int k, struct Node *head)
     }
 
     struct Node *curr_start = head;
+    
+    if(k==1){
+        curr_start = NULL;
+    }
+
     for (int i = 1; i < k - 1; i++)
     {
         curr_start = curr_start->next;
@@ -163,7 +172,7 @@ void main()
 
     display(h1);
 
-    h1 = swap(5, h1);
+    h1 = swap(1, h1);
 
     display(h1);
 }

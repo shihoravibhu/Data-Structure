@@ -2,6 +2,7 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<stdbool.h>
 
 struct TreeNode{
     int data;
@@ -45,48 +46,48 @@ void inOrderTraversal(struct TreeNode* root){
 
 }
 
-int isSame(struct TreeNode* root,struct TreeNode* root2){
+bool isSymmentricHelp(struct TreeNode* left , struct TreeNode* right){
 
-    if(root == NULL || root2 == NULL){
-        return root == root2;
+    if(left == NULL || right == NULL){
+        return left == right;
     }
+    else if(left->data != right->data){
+        return false;
+    }
+    
+    return isSymmentricHelp(left->left,right->right) && isSymmentricHelp(left->right,right->left);
 
-    return (root->data == root2->data) && isSame(root->left,root2->left) && isSame(root->right,root2->right);
+}
 
+bool isSymmentric(struct TreeNode* root){
+
+   return root == NULL || isSymmentricHelp(root->left,root->right);
 }
 
 
 void main(){
 
     struct TreeNode* root = NULL;
-    struct TreeNode* root2 = NULL;
-
+    
     printf("Enter root 1 : ");
     printf("\n");
     
-    root = insertNode(root);   
-    
-    printf("Enter root 2 : ");
-    printf("\n");
-
-    root2 = insertNode(root2);     
+    root = insertNode(root);         
 
     printf("root 1 : ");
     inOrderTraversal(root);
-    printf("\n");
-    
-    printf("root 2 : ");
-    inOrderTraversal(root2);
-    printf("\n");
+    printf("\n");        
 
-    if(isSame(root,root2)){
+    if(isSymmentric(root)){
 
-        printf("Both Are Same.");
+        printf("Tree Is Symmentric.");
     }
     else{
         
-        printf("Not Same.");
+        printf("Tree Is Not Symmentric.");
     }
+
+// 8 5 3 -1 -1 6 -1 -1 7 6 -1 -1 3 -1 -1 (Not Symmentric)
 
 //       1
 //     /  \

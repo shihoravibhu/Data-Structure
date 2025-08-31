@@ -20,7 +20,7 @@ public class bt2_isSymmetric {
 
      public boolean isSymmetricHelp(TreeNode left , TreeNode right){
 
-        if(left == null ||right == null){   // If either node is null, return true only if both are null
+        if(left == null || right == null){   // If either node is null, return true only if both are null
             return (left == right);
         }
 

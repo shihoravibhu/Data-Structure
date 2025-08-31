@@ -147,11 +147,11 @@ void main(){
     struct TreeNode* root = NULL;
 
     root = insertNode(root,40);
-    insertNode(root,20);
-    insertNode(root,60);
-    insertNode(root,70);
-    insertNode(root,35);
-    insertNode(root,18);
+    root = insertNode(root,20);
+    root = insertNode(root,60);
+    root = insertNode(root,70);
+    root = insertNode(root,35);
+    root = insertNode(root,18);
 
     inOrderTraversal(root);
 

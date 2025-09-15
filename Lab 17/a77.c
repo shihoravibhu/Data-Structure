@@ -1,4 +1,4 @@
-// 76. Write a program to check whether the given two trees are same or not. 
+//  77. Write a program to check whether the given tree is symmetric or not. 
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -46,18 +46,15 @@ void inOrderTraversal(struct TreeNode* root){
 
 }
 
-bool isSymmentricHelp(struct TreeNode* left , struct TreeNode* right){
+bool isSymmentricHelp(struct TreeNode* left, struct TreeNode* right) {
 
-    if(left == NULL || right == NULL){
-        return left == right;
-    }
-    else if(left->data != right->data){
-        return false;
-    }
-    
-    return isSymmentricHelp(left->left,right->right) && isSymmentricHelp(left->right,right->left);
+    if(left == NULL || right == NULL)
+    return left == right;
 
+    return (left->data == right->data) && isSymmentricHelp(left->left, right->right) && isSymmentricHelp(left->right, right->left);
 }
+
+
 
 bool isSymmentric(struct TreeNode* root){
 

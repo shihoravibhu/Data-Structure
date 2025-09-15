@@ -46,7 +46,7 @@ void display()
     }
 }
 
-void peep(int idx)
+void peep(int idx) // idx means top thi ketlamo element
 {
     if (idx <= 0 || idx > top + 1)
     {

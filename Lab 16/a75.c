@@ -30,7 +30,7 @@ struct TreeNode* createNode(int val){
 
 struct TreeNode* insertNode(struct TreeNode* root,int val){
 
-    if(root == NULL){                // when first element enter
+    if(root == NULL){                
 
         return createNode(val);
     }
@@ -105,12 +105,12 @@ struct TreeNode* Search(struct TreeNode* root,int val){
         return root;
     }
     else if(val < root->data){
-        root->left = Search(root->left,val);
+        return Search(root->left,val);
     }
     else{
-        root->right = Search(root->right,val);
+        return Search(root->right,val);
     }
-    
+
 }
 
 void inOrderTraversal(struct TreeNode* root){
@@ -126,16 +126,16 @@ void preOrderTraversal(struct TreeNode* root){
 
     if(root != NULL){
         printf("%d ",root->data);
-        inOrderTraversal(root->left);
-        inOrderTraversal(root->right);        
+        preOrderTraversal(root->left);
+        preOrderTraversal(root->right);        
     }
 
 }
 void postOrderTraversal(struct TreeNode* root){
 
     if(root != NULL){
-        inOrderTraversal(root->left);
-        inOrderTraversal(root->right);        
+        postOrderTraversal(root->left);
+        postOrderTraversal(root->right);        
         printf("%d ",root->data);
     }
 
@@ -159,5 +159,55 @@ void main(){
 
     root = DelNode(root,20);
     inOrderTraversal(root);
+
+     struct TreeNode* root = NULL;
+    int choice, val;
+
+    // while(1){
+    //     printf("\n--- Binary Search Tree Menu ---\n");
+    //     printf("1. Insert\n2. Delete\n3. Search\n4. Inorder Traversal\n5. Preorder Traversal\n6. Postorder Traversal\n7. Exit\n");
+    //     printf("Enter your choice: ");
+    //     scanf("%d",&choice);
+
+    //     switch(choice){
+    //         case 1:
+    //             printf("Enter value to insert: ");
+    //             scanf("%d",&val);
+    //             root = insertNode(root,val);
+    //             break;
+    //         case 2:
+    //             printf("Enter value to delete: ");
+    //             scanf("%d",&val);
+    //             root = DelNode(root,val);
+    //             break;
+    //         case 3:
+    //             printf("Enter value to search: ");
+    //             scanf("%d",&val);
+    //             if(Search(root,val))
+    //                 printf("%d found in BST\n",val);
+    //             else
+    //                 printf("%d not found in BST\n",val);
+    //             break;
+    //         case 4:
+    //             printf("Inorder: ");
+    //             inOrderTraversal(root);
+    //             printf("\n");
+    //             break;
+    //         case 5:
+    //             printf("Preorder: ");
+    //             preOrderTraversal(root);
+    //             printf("\n");
+    //             break;
+    //         case 6:
+    //             printf("Postorder: ");
+    //             postOrderTraversal(root);
+    //             printf("\n");
+    //             break;
+    //         case 7:
+    //             exit(0);
+    //         default:
+    //             printf("Invalid choice!\n");
+    //     }
+    // }
     
 }

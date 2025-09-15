@@ -15,25 +15,23 @@ struct Node
     struct Node *prev;
 };
 
-struct Node *insertAtFirst(struct Node *head, int x)
-{
+struct Node* insertAtFirst(struct Node* head, int x) {
 
-    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
-
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = x;
+    newNode->prev = NULL;
     newNode->next = head;
-    
-    if(head == NULL){
-        newNode->prev = NULL;
-        head = newNode;
-        return head;
+
+    if (head != NULL) {
+        head->prev = newNode;
     }
 
-    head->prev = newNode;
     head = newNode;
+
     return head;
-   
+
 }
+
 
 struct Node *insertAtLast(struct Node *head, int x)
 {
@@ -76,11 +74,45 @@ void display(struct Node *head)
 
     while (curr != NULL)
     {
-        printf("%d -> ", curr->data);
+        printf("%d <-> ", curr->data);
         curr = curr->next;
     }
     printf("NULL\n");
 }
+
+struct Node* deleteAtFirst(struct Node* head) {
+    if (head == NULL) return NULL;  // list empty
+
+    struct Node* temp = head;
+    head = head->next;
+
+    if (head != NULL) {
+        head->prev = NULL;
+    }
+
+    free(temp);
+    return head;
+}
+
+struct Node* deleteAtLast(struct Node* head) {
+    if (head == NULL) return NULL;        // empty list
+    if (head->next == NULL) {             // only one node
+        free(head);
+        return NULL;
+    }
+
+    struct Node* curr = head;
+    while (curr->next->next != NULL) {    // stop at 2nd last node
+        curr = curr->next;
+    }
+
+    struct Node* last = curr->next;       // last node
+    curr->next = NULL;                    // unlink last node
+    free(last);
+
+    return head;
+}
+
 
 struct Node* deleteNodeFromPosition(int n , struct Node* head){
 

@@ -97,3 +97,88 @@ void main() {
    
 }
 
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// struct Node {
+//     int data;
+//     struct Node* next;
+// };
+
+// // Enqueue (insert at last)
+// void enqueue(struct Node** front, struct Node** rear, int x) {
+//     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+//     newNode->data = x;
+//     newNode->next = NULL;
+
+//     if (*rear == NULL) {   // queue empty
+//         *front = *rear = newNode;
+//         return;
+//     }
+
+//     (*rear)->next = newNode;
+//     *rear = newNode;
+// }
+
+// // Dequeue (remove from front)
+// int dequeue(struct Node** front, struct Node** rear) {
+//     if (*front == NULL) {
+//         printf("Queue is empty!\n");
+//         return -1;
+//     }
+
+//     struct Node* temp = *front;
+//     int value = temp->data;
+
+//     *front = (*front)->next;
+//     if (*front == NULL) {   // if queue became empty
+//         *rear = NULL;
+//     }
+
+//     free(temp);
+//     return value;
+// }
+
+// // Peek (see front element)
+// int peek(struct Node* front) {
+//     if (front == NULL) {
+//         printf("Queue is empty!\n");
+//         return -1;
+//     }
+//     return front->data;
+// }
+
+// // Display queue
+// void display(struct Node* front) {
+//     if (front == NULL) {
+//         printf("Queue is empty\n");
+//         return;
+//     }
+
+//     printf("Queue (front -> rear): ");
+//     while (front != NULL) {
+//         printf("%d -> ", front->data);
+//         front = front->next;
+//     }
+//     printf("NULL\n");
+// }
+
+// int main() {
+//     struct Node* front = NULL;
+//     struct Node* rear = NULL;
+
+//     enqueue(&front, &rear, 10);
+//     enqueue(&front, &rear, 20);
+//     enqueue(&front, &rear, 30);
+
+//     display(front);
+
+//     printf("Dequeued: %d\n", dequeue(&front, &rear));
+//     display(front);
+
+//     printf("Front element: %d\n", peek(front));
+
+//     return 0;
+// }
+
+

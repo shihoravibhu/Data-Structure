@@ -241,3 +241,172 @@ void main(){
         }
     }
 }
+
+
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// struct Node {
+//     int data;
+//     struct Node *next;
+// };
+
+// struct Node* insertAtFirst(struct Node *head, int x) {
+//     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+//     newNode->data = x;
+//     newNode->next = head;
+//     return newNode;   // new head
+// }
+
+// struct Node* insertAtLast(struct Node *head, int x) {
+//     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+//     newNode->data = x;
+//     newNode->next = NULL;
+
+//     if (head == NULL) {
+//         return newNode;   // new node is head
+//     }
+
+//     struct Node *curr = head;
+//     while (curr->next != NULL) {
+//         curr = curr->next;
+//     }
+//     curr->next = newNode;
+//     return head;
+// }
+
+// void display(struct Node *head) {
+//     if (head == NULL) {
+//         printf("List is empty\n");
+//         return;
+//     }
+//     while (head != NULL) {
+//         printf("%d -> ", head->data);
+//         head = head->next;
+//     }
+//     printf("NULL\n");
+// }
+
+// struct Node* deleteAtStart(struct Node *head) {
+//     if (head == NULL) {
+//         printf("List is empty\n");
+//         return NULL;
+//     }
+//     struct Node *temp = head;
+//     head = head->next;
+//     free(temp);
+//     return head;
+// }
+
+// struct Node* deleteAtEnd(struct Node *head) {
+//     if (head == NULL) {
+//         printf("List is empty\n");
+//         return NULL;
+//     }
+//     if (head->next == NULL) {
+//         free(head);
+//         return NULL;
+//     }
+//     struct Node *curr = head;
+//     while (curr->next->next != NULL) {
+//         curr = curr->next;
+//     }
+//     free(curr->next);
+//     curr->next = NULL;
+//     return head;
+// }
+
+// struct Node* deleteNodeFromPosition(struct Node *head, int n) {
+//     if (head == NULL) {
+//         printf("List is empty\n");
+//         return NULL;
+//     }
+//     if (n < 1) {
+//         printf("Invalid position\n");
+//         return head;
+//     }
+//     if (n == 1) {
+//         struct Node *temp = head;
+//         head = head->next;
+//         free(temp);
+//         return head;
+//     }
+
+//     struct Node *curr = head;
+//     for (int i = 1; curr != NULL && i < n - 1; i++) {
+//         curr = curr->next;
+//     }
+
+//     if (curr == NULL || curr->next == NULL) {
+//         printf("Position out of range\n");
+//         return head;
+//     }
+
+//     struct Node *temp = curr->next;
+//     curr->next = curr->next->next;
+//     free(temp);
+//     return head;
+// }
+
+// int countNodes(struct Node *head) {
+//     int count = 0;
+//     while (head != NULL) {
+//         head = head->next;
+//         count++;
+//     }
+//     return count;
+// }
+
+// int main() {
+//     struct Node *head = NULL;
+//     int choice, value, position;
+
+//     printf("\nMenu:\n");
+//     printf("1. Insert at front\n");
+//     printf("2. Display all nodes\n");
+//     printf("3. Delete first node\n");
+//     printf("4. Insert at end\n");
+//     printf("5. Delete last node\n");
+//     printf("6. Delete node at specified position\n");
+//     printf("7. Count nodes\n");
+//     printf("8. Exit\n");
+
+//     while (1) {
+//         printf("Enter choice: ");
+//         scanf("%d", &choice);
+
+//         switch (choice) {
+//             case 1:
+//                 printf("Enter value to insert at front: ");
+//                 scanf("%d", &value);
+//                 head = insertAtFirst(head, value);
+//                 break;
+//             case 2:
+//                 display(head);
+//                 break;
+//             case 3:
+//                 head = deleteAtStart(head);
+//                 break;
+//             case 4:
+//                 printf("Enter value to insert at end: ");
+//                 scanf("%d", &value);
+//                 head = insertAtLast(head, value);
+//                 break;
+//             case 5:
+//                 head = deleteAtEnd(head);
+//                 break;
+//             case 6:
+//                 printf("Enter position to delete node: ");
+//                 scanf("%d", &position);
+//                 head = deleteNodeFromPosition(head, position);
+//                 break;
+//             case 7:
+//                 printf("Number of nodes: %d\n", countNodes(head));
+//                 break;
+//             case 8:
+//                 return 0;
+//             default:
+//                 printf("Invalid choice. Please try again.\n");
+//         }
+//     }
+// }

@@ -5,21 +5,22 @@
 #include <stdlib.h>
 
 void selectionSort(int arr[], int size){ 
-
-    for(int i=0 ; i<size-1 ; i++){
-        int min = i;
-        for(int j=i+1 ; j<size ; j++){
-
-            if(arr[min] > arr[j]){
-                int temp = arr[min];
-                arr[min] = arr[j];
-                arr[j] = temp;
+    for(int i = 0; i < size-1; i++){
+        int min = i;  // assume current i is the minimum
+        for(int j = i+1; j < size; j++){
+            if(arr[j] < arr[min]){
+                min = j;  // update index of minimum
             }
-            
+        }
+        // Swap only once after finding the minimum
+        if(min != i){
+            int temp = arr[i];
+            arr[i] = arr[min];
+            arr[min] = temp;
         }
     }
-      
 }
+
 
 void main()
 {

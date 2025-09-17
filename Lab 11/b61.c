@@ -1,101 +1,101 @@
-// 61. Write a program to implement priority queue using singly linked list. (Ascending priority) 
+// 61. Write a program to implement priority queue using singly linked list. (Ascending priority)
 // (smaller number = higher priority)
 
-#include <stdio.h>
-#include <stdlib.h>
+// #include <stdio.h>
+// #include <stdlib.h>
 
+// struct Node {
+//     int data;
+//     int priority;
+//     struct Node* next;
+// };
 
-struct Node {
-    int data;
-    int priority;
-    struct Node* next;
-};
+// // Create Node
 
-// Create Node
+// struct Node* createNode(int data , int priority){
 
-struct Node* createNode(int data , int priority){
+//     struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
 
-    struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
-    
-    newNode->data = data;
-    newNode->priority = priority;
-    
-    return newNode;
-}
+//     newNode->data = data;
+//     newNode->priority = priority;
 
-// Enqueue operation (insert in sorted order of priority)
+//     return newNode;
+// }
 
-void enqueue(struct Node** head , int data , int priority){
-    
-    struct Node* newNode = createNode(data,priority);
+// // Enqueue operation (insert in sorted order of priority)
 
-    if(*head == NULL || newNode->priority < (*head)->priority){
-        newNode->next = *head;
-        *head = newNode;
-    }
-    else{
-        struct Node* curr = *head;
+// void enqueue(struct Node** head , int data , int priority){
 
-        while(curr->next != NULL && newNode->priority >= curr->next->priority){
-            curr = curr->next;
-        }
+//     struct Node* newNode = createNode(data,priority);
 
-        newNode->next = curr->next;
-        curr->next = newNode;
-    }
-    
-}
+//     if(*head == NULL || newNode->priority < (*head)->priority){
+//         newNode->next = *head;
+//         *head = newNode;
+//     }
+//     else{
+//         struct Node* curr = *head;
 
-// Dequeue operation (removes highest priority node)
+//         while(curr->next != NULL && newNode->priority >= curr->next->priority){
+//             curr = curr->next;
+//         }
 
-int dequeue(struct Node** head){
+//         newNode->next = curr->next;
+//         curr->next = newNode;
+//     }
 
-    if(head == NULL){
-        printf("Priority Queue is empty!\n");
-        return -1;
-    }
+// }
 
-    int val = (*head)->data;
-    
-    struct Node* temp = *head;
-    *head = (*head)->next;
-    free(temp);
+// // Dequeue operation (removes highest priority node)
 
-    return val;
-}
+// int dequeue(struct Node** head){
 
+//     if(head == NULL){
+//         printf("Priority Queue is empty!\n");
+//         return -1;
+//     }
 
-// Display the queue
-void display(struct Node* head) {
-    if (head == NULL) {
-        printf("Priority Queue is empty.\n");
-        return;
-    }
+//     int val = (*head)->data;
 
-    printf("Priority Queue (Data | Priority):\n");
-    while (head != NULL) {
-        printf("%d | %d --> ", head->data, head->priority);
-        head = head->next;
-    }
-    printf("NULL\n");
-}
+//     struct Node* temp = *head;
+//     *head = (*head)->next;
+//     free(temp);
 
+//     return val;
+// }
 
-void main() {
-    struct Node* pq = NULL;
+// // Display the queue
+// void display(struct Node* head) {
+//     if (head == NULL) {
+//         printf("Priority Queue is empty.\n");
+//         return;
+//     }
 
-    enqueue(&pq, 30, 2);
-    enqueue(&pq, 10, 1);
-    enqueue(&pq, 50, 3);
-    enqueue(&pq, 20, 0);
+//     printf("Priority Queue (Data | Priority):\n");
+//     while (head != NULL) {
+//         printf("%d | %d --> ", head->data, head->priority);
+//         head = head->next;
+//     }
+//     printf("NULL\n");
+// }
 
-    display(pq);
+// void main() {
+//     struct Node* pq = NULL;
 
-    printf("Dequeued: %d\n", dequeue(&pq));
-    display(pq);
+//     enqueue(&pq, 30, 2);
+//     enqueue(&pq, 10, 1);
+//     enqueue(&pq, 50, 3);
+//     enqueue(&pq, 20, 0);
 
-   
-}
+//     display(pq);
+
+//     printf("Dequeued: %d\n", dequeue(&pq));
+//     display(pq);
+
+// }
+
+// or
+
+// queue
 
 // #include <stdio.h>
 // #include <stdlib.h>
@@ -181,4 +181,125 @@ void main() {
 //     return 0;
 // }
 
+// or
 
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node{
+    
+    int data;
+    struct Node *next;
+};
+
+struct Node *front = NULL;
+struct Node *rear = NULL;
+
+void enqueue(int value){
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    // if (!newNode) {
+    //     printf("Memory allocation failed!\n");
+    //     return;
+    // }
+    newNode->data = value;
+    newNode->next = NULL;
+
+    if (rear == NULL){
+        
+        front = rear = newNode;
+    }
+    else{
+
+        rear->next = newNode;
+        rear = newNode;
+    }
+    printf("%d enqueued to queue\n", value);
+}
+
+int dequeue(){
+
+    if (front == NULL){
+
+        printf("Queue Underflow\n");
+        return -1;
+    }
+
+    struct Node *temp = front;
+
+    int value = front->data;
+    front = front->next;
+
+    if (front == NULL)
+        rear = NULL;
+        
+    free(temp);
+    return value;
+}
+
+int peek(){
+
+    if (front == NULL)
+    {
+        printf("Queue is empty\n");
+        return -1;
+    }
+    return front->data;
+}
+
+void display(){
+
+    if (front == NULL)
+    {
+        printf("Queue is empty\n");
+        return;
+    }
+    struct Node *temp = front;
+    printf("Queue elements: ");
+    while (temp != NULL)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+int main(){
+
+    int choice, value;
+    while (1)
+    {
+        printf("\n--- Queue Menu ---\n");
+        printf("1. Enqueue\n2. Dequeue\n3. Peek\n4. Display\n5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            printf("Enter value to enqueue: ");
+            scanf("%d", &value);
+            enqueue(value);
+            break;
+        case 2:
+            value = dequeue();
+            if (value != -1)
+                printf("Dequeued value: %d\n", value);
+            break;
+        case 3:
+            value = peek();
+            if (value != -1)
+                printf("Front element: %d\n", value);
+            break;
+        case 4:
+            display();
+            break;
+        case 5:
+            printf("Exiting program.\n");
+            exit(0);
+        default:
+            printf("Invalid choice! Try again.\n");
+        }
+    }
+
+    return 0;
+}

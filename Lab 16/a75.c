@@ -71,7 +71,7 @@ struct TreeNode* DelNode(struct TreeNode* root,int val){
     else{       // if val == root->data matched
 
         if(root->left == NULL && root->right == NULL){      // case 1 Node With zero child
-            struct TreeNode* temp = root;
+           
             free(root);   
             return NULL;         
         }
@@ -92,6 +92,7 @@ struct TreeNode* DelNode(struct TreeNode* root,int val){
         }
         
         return root;
+
     }
 }
 

@@ -14,7 +14,7 @@ int front = -1, rear = -1;
 void enqueue(int val)
 {
 
-    if (rear == MAX - 1)
+    if (rear >= MAX - 1)
     {
         printf("Queue Is OverFlow.\n");
         return;
